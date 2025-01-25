@@ -78,7 +78,7 @@ L_d = 6.6;
 L_ls = 0.8;
 
 % Resistencia de estator por fase (@ T_sREF) [ohm]
-R_s = 1.02;
+R_s_ref = 1.02;
 
 % Temperatura de referencia del bobinado del estator [ºC]
 T_s_ref = 20;
