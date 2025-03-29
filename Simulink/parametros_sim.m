@@ -1,6 +1,6 @@
 clc; clear; close;
 
-% Parametros 
+% Parametros
 
 % Aceleracion de la gravedad [m/s^2]
 g = 9.80665;
