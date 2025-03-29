@@ -1,12 +1,11 @@
 clc; clear; close;
 
-% Parametros equivalentes
-
-%% CARGA MECANICA 
+% Parametros 
 
 % Aceleracion de la gravedad [m/s^2]
 g = 9.80665;
- 
+
+%% CARGA MECANICA 
 % Coeficiente de friccion viscosa en la articulacion [N.m/(rad/s)]
 b_l = 0.1;          % [+- 0.03]
 
@@ -78,13 +77,13 @@ P_p = 3;
 lambda_m = 0.016;
 
 % Inductancia de estator (eje en cuadratura, q) [mH]
-L_q = 5.8;
+L_q = 5.8 * 10^-3;
 
 % Inductancia de estator (eje directo, d) [mH]
-L_d = 6.6;
+L_d = 6.6 * 10^-3;
 
 % Inductancia de dispersion de estator [mH]
-L_ls = 0.8;
+L_ls = 0.8* 10^-3;
 
 % Resistencia de estator por fase (@ T_sREF) [ohm]
 R_s_ref = 1.02;
@@ -103,7 +102,12 @@ T_s_max = 115;
 alpha_Cu = 3.9e-3;
 
 % Resistencia de estator por fase @ T_s_max
+
+T_s_min = -10;
+
+R_s_min = R_s_ref*(1+alpha_Cu*(T_s_min-T_s_ref));
 R_s_max = R_s_ref*(1+alpha_Cu*(T_s_max-T_s_ref));
+
 
 % Capacitancia termica de estator [ W/(ºC/s)]
 C_ts = 0.818;
@@ -131,16 +135,17 @@ omega_m_nom = 691.15;
 % Temperatura ambiente [ºC]
 T_amb = 25;         % [-15...40]
 
-
-%% INVERSOR TRIFASICO DE ALIMENTACION
-
-
-
 %% Modelo matematico equivalente del subsistema mecanico completo
 
 % Momento de inercia equivalente [kg.m^2]
 J_eq = J_m + J_l/(r^2);
 
+J_eq_min = J_m + J_l_min/(r^2);
+J_eq_max = J_m + J_l_max/(r^2);
+
 % Coeficiente de friccion equivalente [N.m/(rad/s)]
 b_eq = b_m + b_l/(r^2);
+
+b_eq_min = b_m + b_l_min/(r^2);
+b_eq_max = b_m + b_l_max/(r^2);
 
