@@ -27,13 +27,13 @@ l_l = 0.50;
 
 % Masa de carga util en el extremo - variable [kg]
 m_l = 0.0;            % [0...1.5]
-m_l_sc = 0.0;
+m_l_min = 0.0;
 m_l_max = 1.5;
 
 % Momento de inercia total (al eje de rotacion) [kg.m^2]
 J_l = (m*(l_cm)^2 + J_cm) + m_l*(l_l^2);     
 
-J_l_min = (m*(l_cm)^2 + J_cm) + m_l_sc*(l_l^2);  
+J_l_min = (m*(l_cm)^2 + J_cm) + m_l_min*(l_l^2);  
 J_l_max = (m*(l_cm)^2 + J_cm) + m_l_max*(l_l^2);    
 
 % Coeficiente k_l del torque de carga (incluye g) [N.m]
