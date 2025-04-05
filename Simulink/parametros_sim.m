@@ -89,7 +89,7 @@ L_ls = 0.8* 10^-3;
 R_s_ref = 1.02;
 
 % Resistencia de estator lineal [ohm]
-R_s = 1;
+R_s = R_s_ref;
 
 % Temperatura de referencia del bobinado del estator [ºC]
 T_s_ref = 20;
@@ -133,7 +133,7 @@ omega_m_nom = 691.15;
 % Corriente maxima
 
 % Temperatura ambiente [ºC]
-T_amb = 25;         % [-15...40]
+T_amb = 20;         % [-15...40]
 
 %% Modelo matematico equivalente del subsistema mecanico completo
 
