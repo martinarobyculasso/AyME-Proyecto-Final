@@ -1,6 +1,10 @@
 
 % Plots
 
+% Simulación
+out1 = sim('modelo_lti_aumentado_sim');
+out2 = sim('modelo_nl_control_nl_2cVI_sim');
+
 % Colores
 redd ='#A2142F';
 orangee = '#D95319';
@@ -11,19 +15,32 @@ yelloww = '#EDB120';
 pinkk = '#ffafcc';
 brownn = '#7f4f24';
 
-defaultPos = get(groot, 'defaultFigurePosition');       % [left, bottom, width, height]
-newWidth = defaultPos(3) * 2;                           % Modify multiplier as needed
-figure('Position', [defaultPos(1:2) newWidth defaultPos(4)]);
+% Gráfica
 
-torque = out.get('torque');
-plot(torque.Time, torque.Data, 'Color', orangee, 'LineWidth', 1.5);
-title('T_l (t)');
-xlabel('Tiempo (s)');
-ylabel('Torque (N.m)');
+% Configuración de la ventana
+defaultPos = get(groot, 'defaultFigurePosition');       % [left, bottom, width, height]
+newWidth = defaultPos(3) * 2;                           
+newheight = defaultPos(4) * 0.5;
+
+% Creación de la figura
+figure('Position', [defaultPos(1:2) newWidth newheight]);
+
+% Data extraida del modelo
+theta_m_nl = out2.get('theta_m_nl');
+theta_m = out1.get('theta_m_plot');
+
+plot(theta_m.Time, theta_m.Data, 'Color', yelloww, 'LineWidth', 1.5);
+hold on;
+plot(theta_m_nl.Time, theta_m_nl.Data, 'Color', purplee, 'LineStyle', '--','LineWidth', 1.5);
+
+title('\theta_m (t)');
+xlabel('Tiempo [s]');
+ylabel('Posición [rad]');
+legend('\theta_m LTI', '\theta_m NL', 'Location','best');
+
 grid on;
-grid minor;
 set(gca, 'FontSize', 12);
-% axis tight;
-% xlim([0, 1]);                           % X-axis limits
-% ylim([-5, 275]);                        % Y-axis limits
-saveas(gcf, 't_l_LTI.png');           % .fig, .png, .jpg, .pdf, .eps, etc.
+axis tight;
+
+% Guardar
+exportgraphics(gcf, 'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/comp_posiciones.pdf', 'ContentType', 'vector');
