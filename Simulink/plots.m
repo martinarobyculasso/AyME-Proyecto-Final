@@ -1,6 +1,9 @@
 
 % Plots
 
+% Parámetros
+% parametros
+
 % Simulación
 out1 = sim('modelo_lti_aumentado_sim');
 out2 = sim('modelo_nl_control_nl_2cVI_sim');
@@ -19,7 +22,7 @@ brownn = '#7f4f24';
 
 % Configuración de la ventana
 defaultPos = get(groot, 'defaultFigurePosition');       % [left, bottom, width, height]
-newWidth = defaultPos(3) * 2;                           
+newWidth = defaultPos(3) * 2.5;                           
 newheight = defaultPos(4) * 0.5;
 
 % Creación de la figura
