@@ -31,9 +31,10 @@ for i = 1:length(puntos)
     
     info_respuestas(i).Tiempo = puntos(i);
     info_respuestas(i).AmplitudFinal = y_final;
-    info_respuestas(i).RiseTime = info.RiseTime;
-    info_respuestas(i).SettlingTime = info.SettlingTime;
+    info_respuestas(i).RiseTime = info.RiseTime*10^3;
+    info_respuestas(i).SettlingTime = info.SettlingTime*10^3;
     info_respuestas(i).Overshoot = info.Overshoot;
+
 
 end
 

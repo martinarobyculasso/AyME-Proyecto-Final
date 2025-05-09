@@ -5,7 +5,7 @@
 % parametros
 
 % Simulación
-out1 = sim('modelo_lti_aumentado_sim');
+% out1 = sim('lti_aumentado2');
 out2 = sim('modelo_nl_control_nl_2cVI_sim');
 
 % Colores
@@ -18,42 +18,78 @@ yelloww = '#EDB120';
 pinkk = '#ffafcc';
 brownn = '#7f4f24';
 
+% Data extraida del modelo
+% ome1 = out2.get('omega_m_nl');
+% omepos = out2.get('omega_positivo'); 
+% omeneg = out2.get('omega_negativo'); 
+
+torque = out2.get('T_m_nl');
+% tpos = out2.get('torque_positivo'); 
+% tneg = out2.get('torque_negativo'); 
+
 % Gráfica
 
 % Configuración de la ventana
-defaultPos = get(groot, 'defaultFigurePosition');       % [left, bottom, width, height]
-newWidth = defaultPos(3) * 2.5;                           
-newheight = defaultPos(4) * 0.5;
+defaultPos = get(groot, 'defaultFigurePosition'); % [left, bottom, width, height]
+newbottom = defaultPos(2) * 0.3;
+newWidth = defaultPos(3) * 1.7;                           
+newheight = defaultPos(4) * 1.7;
 
 % Creación de la figura
-figure('Position', [defaultPos(1:2) newWidth newheight]);
+figure('Position', [defaultPos(1) newbottom newWidth newheight]);
 
-% Data extraida del modelo
-vq = out2.get('tension_q_nl');
-tl = out1.get("torque");
-
-plot(vq.Time, vq.Data, 'Color', bluee, 'LineWidth', 1.5);
+plot(torque.Time, torque.Data, 'Color', purplee, 'LineWidth', 1.5);
 hold on;
-plot(0.1, 19.569, 'Color', bluee, 'Marker','o','LineWidth',1); % marcar el punto
-text(0.1, 19.569, '  19,569 V', 'VerticalAlignment', 'top', 'HorizontalAlignment', 'left', 'FontSize',12);
-% plot(0.5, -6.28, 'Color', orangee, 'Marker','o','LineWidth',1); % marcar el punto
-% text(0.5, -6.28, '  -6,28 Nm', 'VerticalAlignment', 'bottom', 'HorizontalAlignment', 'left', 'FontSize',12);
+plot(tpos.Time, tpos.Data, 'Color', pinkk, 'LineWidth', 1.5);
+plot(tneg.Time, tneg.Data, 'Color', brownn, 'LineWidth', 1.5);
 
-title('v_{qs}^* (t)');
-ylabel('Tensión [V]');
+title('T_{m} (t)');
+ylabel('Torque [N.m]');
 xlabel('Tiempo [s]');
-%legend('\omega_m LTI', '\omega_m NL','Location','bestoutside');
+legend('v_{ds}^{*} = 0', 'v_{ds}^{*} > 0','v_{ds}^{*} < 0','Location','bestoutside');
 
 grid on;
 set(gca, 'FontSize', 12);
-axis tight;
+% axis tight;
+xlim([0.48 0.6]);
+
+% % Guardar la figura en alta resolución (300 dpi) y formato PNG
+% exportgraphics(gcf, ...
+%     'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/field_torque_nl.png', ...
+%     'Resolution', 300, ...       % Alta resolución (300 ppp)
+%     'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
+%     'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
+
+
+% % Gráfica
 % 
-% Guardar la figura en alta resolución (300 dpi) y formato PNG
-exportgraphics(gcf, ...
-    'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/consigna_v.png', ...
-    'Resolution', 300, ...       % Alta resolución (300 ppp)
-    'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
-    'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
+% % Configuración de la ventana
+% defaultPos = get(groot, 'defaultFigurePosition');       % [left, bottom, width, height]
+% newWidth = defaultPos(3) * 2.5;                           
+% newheight = defaultPos(4) * 0.5;
+% 
+% % Creación de la figura
+% figure('Position', [defaultPos(1:2) newWidth newheight]);
+% 
+% plot(v0.Time, v0.Data, 'Color', brownn, 'LineWidth', 1.5);
+% 
+% 
+% title('v_{0s} (t)');
+% ylabel('Tensión [V]');
+% xlabel('Tiempo [s]');
+% % legend('i_{ds} LTI', 'i_{ds} NL','Location','bestoutside');
+% 
+% grid on;
+% set(gca, 'FontSize', 12);
+% axis tight;
+% 
+% 
+% % Guardar la figura en alta resolución (300 dpi) y formato PNG
+% exportgraphics(gcf, ...
+%     'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/v0s_nl2.png', ...
+%     'Resolution', 300, ...       % Alta resolución (300 ppp)
+%     'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
+%     'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
 %%
 
 % % Configuración de la ventana
