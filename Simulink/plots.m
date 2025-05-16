@@ -19,39 +19,30 @@ pinkk = '#ffafcc';
 brownn = '#7f4f24';
 
 % Data extraida del modelo
-% ome1 = out2.get('omega_m_nl');
-% omepos = out2.get('omega_positivo'); 
-% omeneg = out2.get('omega_negativo'); 
-
-torque = out2.get('T_m_nl');
-% tpos = out2.get('torque_positivo'); 
-% tneg = out2.get('torque_negativo'); 
+delta = out2.get('angulo_carga');
 
 % Gráfica
 
 % Configuración de la ventana
-defaultPos = get(groot, 'defaultFigurePosition'); % [left, bottom, width, height]
-newbottom = defaultPos(2) * 0.3;
-newWidth = defaultPos(3) * 1.7;                           
-newheight = defaultPos(4) * 1.7;
+defaultPos = get(groot, 'defaultFigurePosition');       % [left, bottom, width, height]
+newWidth = defaultPos(3) * 2.5;                           
+newheight = defaultPos(4) * 0.5;
 
 % Creación de la figura
-figure('Position', [defaultPos(1) newbottom newWidth newheight]);
+figure('Position', [defaultPos(1:2) newWidth newheight]);
 
-plot(torque.Time, torque.Data, 'Color', purplee, 'LineWidth', 1.5);
-hold on;
-plot(tpos.Time, tpos.Data, 'Color', pinkk, 'LineWidth', 1.5);
-plot(tneg.Time, tneg.Data, 'Color', brownn, 'LineWidth', 1.5);
+plot(delta.Time, delta.Data, 'Color', purplee, 'LineWidth', 1.5);
 
-title('T_{m} (t)');
-ylabel('Torque [N.m]');
+
+title('Ángulo de torque \delta (t)');
+ylabel('Ángulo [rad]');
 xlabel('Tiempo [s]');
-legend('v_{ds}^{*} = 0', 'v_{ds}^{*} > 0','v_{ds}^{*} < 0','Location','bestoutside');
+% legend('delta', 'ev','r','Location','bestoutside');
 
 grid on;
 set(gca, 'FontSize', 12);
-% axis tight;
-xlim([0.48 0.6]);
+axis tight;
+xlim([0 1]);
 
 % % Guardar la figura en alta resolución (300 dpi) y formato PNG
 % exportgraphics(gcf, ...
