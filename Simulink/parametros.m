@@ -36,8 +36,8 @@ J_l = (m*(l_cm)^2 + J_cm) + m_l*(l_l^2);
 J_l_min = (m*(l_cm)^2 + J_cm) + m_l_min*(l_l^2);  
 J_l_max = (m*(l_cm)^2 + J_cm) + m_l_max*(l_l^2);    
 
-% Coeficiente k_l del torque de carga (incluye g) [N.m]
-k_l = (m*l_cm + m_l*l_l)*g;
+% Coeficiente k_l del torque de carga [N.m]
+k_l = (m*l_cm + m_l*l_l);
 
 % Torque de perturbacion por contacto [N.m]
 T_dl = 0;            % [+- 5.0]

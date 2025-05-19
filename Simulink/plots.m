@@ -44,12 +44,12 @@ set(gca, 'FontSize', 12);
 axis tight;
 xlim([0 1]);
 
-% % Guardar la figura en alta resolución (300 dpi) y formato PNG
-% exportgraphics(gcf, ...
-%     'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/field_torque_nl.png', ...
-%     'Resolution', 300, ...       % Alta resolución (300 ppp)
-%     'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
-%     'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
+% Guardar la figura en alta resolución (300 dpi) y formato PNG
+exportgraphics(gcf, ...
+    'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/angulo_torque.png', ...
+    'Resolution', 300, ...       % Alta resolución (300 ppp)
+    'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
+    'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
 
 
 % % Gráfica
