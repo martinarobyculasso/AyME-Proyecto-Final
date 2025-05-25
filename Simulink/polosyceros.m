@@ -164,20 +164,20 @@ end
 title('Mapa de polos y ceros del sistema LTI para diferentes valores de T_{s}^{\circ}');
 xlabel('Parte Real');
 ylabel('Parte Imaginaria');
-legend(legendEntries, 'Location', 'bestoutside');
+legend(legendEntries, 'Location', 'best');
 grid on;
 set(gca, 'FontSize', 12);
 xlim([-250, 0]);  % Ajustá los límites según tus polos
 
 hold off;
 
-% Guardar la figura en alta resolución (300 dpi) y formato PNG
-exportgraphics(gcf, ...
-    'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/polos_temp.png', ...
-    'Resolution', 300, ...       % Alta resolución (300 ppp)
-    'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
-    'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
-
+% % Guardar la figura en alta resolución (300 dpi) y formato PNG
+% exportgraphics(gcf, ...
+%     'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/polos_temp.png', ...
+%     'Resolution', 300, ...       % Alta resolución (300 ppp)
+%     'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
+%     'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
+% 
 
 
 
