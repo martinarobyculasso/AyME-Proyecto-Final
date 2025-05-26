@@ -149,3 +149,9 @@ b_eq = b_m + b_l/(r^2);
 b_eq_min = b_m + b_l_min/(r^2);
 b_eq_max = b_m + b_l_max/(r^2);
 
+%% Controlador PID
+
+b_a = 0.0396;       % [N.m/(rad/s)]
+K_sia = 10129.78;   % [N.m/(rad.s)]
+K_sa = 31.656;      % [N.m/rad]
+
