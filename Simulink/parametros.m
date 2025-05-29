@@ -1,5 +1,3 @@
-clc; clear; close;
-
 % Parametros
 
 % Aceleracion de la gravedad [m/s^2]
@@ -150,8 +148,9 @@ b_eq_min = b_m + b_l_min/(r^2);
 b_eq_max = b_m + b_l_max/(r^2);
 
 %% Controlador PID
+zeta = 0.75;
+wp = 800;
 
-b_a = 0.0396;       % [N.m/(rad/s)]
-K_sia = 10129.78;   % [N.m/(rad.s)]
-K_sa = 31.656;      % [N.m/rad]
-
+b_a = J_eq*(2*zeta+1)*wp;       % [N.m/(rad/s)]
+K_sa = J_eq*(2*zeta+1)*wp^2;   % [N.m/rad]
+K_sia = J_eq*wp^3;               % [N.m/rad.s]
