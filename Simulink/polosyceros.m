@@ -96,7 +96,7 @@ T_values = linspace(T_min, T_max, 6); % 6 puntos entre T_min y T_max
 % colors = jet(length(T_values));
 
 % Configurar figura
-figure('Position', [100 100 800 600]);
+figure('Position', [100 100 800 800]);
 hold on;
 
 % Crear celdas para almacenar sistemas
@@ -157,27 +157,31 @@ plot(x_circle, y_circle, 'k--');
 
 % Crear entradas de leyenda
 for i = 1:length(T_values)
-    legendEntries{i} = sprintf('T = %.1f°C', T_values(i));
+    T = T_values(i);
+    R_ss = R_s_ref * (1 + alpha_Cu * (T - T_s_ref));
+    legendEntries{i} = sprintf('R_s = %.3f \\Omega (T = %.1f °C)', R_ss, T);
 end
 
+
 % Configuraciones finales
-title('Mapa de polos y ceros del sistema LTI para diferentes valores de T_{s}^{\circ}');
+% title('Mapa de polos y ceros del sistema LTI para diferentes valores de R_{s}');
+title('');
 xlabel('Parte Real');
 ylabel('Parte Imaginaria');
-legend(legendEntries, 'Location', 'best');
+legend(legendEntries, 'Location', 'northwest');
 grid on;
 set(gca, 'FontSize', 12);
 xlim([-250, 0]);  % Ajustá los límites según tus polos
 
 hold off;
 
-% % Guardar la figura en alta resolución (300 dpi) y formato PNG
-% exportgraphics(gcf, ...
-%     'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/polos_temp.png', ...
-%     'Resolution', 300, ...       % Alta resolución (300 ppp)
-%     'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
-%     'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
-% 
+% Guardar la figura en alta resolución (300 dpi) y formato PNG
+exportgraphics(gcf, ...
+    'C:/Users/Marti/Desktop/polos_temp.png', ...
+    'Resolution', 300, ...       % Alta resolución (300 ppp)
+    'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
+    'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)
+
 
 
 

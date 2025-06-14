@@ -58,12 +58,12 @@ scatter(real(polos_pid), imag(polos_pid), 100, 'bx', 'LineWidth', 2, 'DisplayNam
 scatter(real(polos_pid_max), imag(polos_pid_max), 100, 'gx', 'LineWidth', 2, 'DisplayName', 'PID (valores máx.)');
 
 
-legend('Location', 'bestoutside');
+legend('Location', 'northeast');
 % ylim([-1500 1500])
 
 % Guardar la figura en alta resolución (300 dpi) y formato PNG
 exportgraphics(gcf, ...
-    'C:/Users/Marti/Documents/GitHub/AyME-Proyecto-Final/Informe/Figuras/polos_comp.png', ...
+    'C:/Users/Marti/Desktop/polos_comp.png', ...
     'Resolution', 300, ...       % Alta resolución (300 ppp)
     'BackgroundColor', 'white',...  % Fondo blanco (en lugar de transparente)
     'ContentType', 'auto');     % Tipo de contenido automático (vectorial si es posible)

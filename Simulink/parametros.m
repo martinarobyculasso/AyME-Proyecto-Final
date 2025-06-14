@@ -1,3 +1,5 @@
+% clc; clear; close;
+
 % Parametros
 
 % Aceleracion de la gravedad [m/s^2]
@@ -148,9 +150,31 @@ b_eq_min = b_m + b_l_min/(r^2);
 b_eq_max = b_m + b_l_max/(r^2);
 
 %% Controlador PID
-zeta = 0.75;
-wp = 800;
 
-b_a = J_eq*(2*zeta+1)*wp;       % [N.m/(rad/s)]
-K_sa = J_eq*(2*zeta+1)*wp^2;   % [N.m/rad]
-K_sia = J_eq*wp^3;               % [N.m/rad.s]
+b_a = 0.0396;       % [N.m/(rad/s)]
+K_sia = 10129.78;   % [N.m/(rad.s)]
+K_sa = 31.656;      % [N.m/rad]
+%% OBSERVADOR
+
+Ke_theta=   6400 ;  % [1/s]
+Ke_omega=   10240000;% [1/(s^2)]
+
+%% OBSERVADOR MEJORADO
+Ke_t2 = 9600;
+Ke_o2 = 3*3200^2;
+Ke_i = 3200^3;
+
+%% SENSORES NO IDEALES
+wnc = 6000*3;
+wnt = 2000*3;
+z = 1;
+% tau = 20;
+tau = 0.05;
+
+%% MODULADOR DE TENSION NO IDEAL
+sat = ((sqrt(2))/(sqrt(3)))*48;
+wn_mod = 6000*4;
+
+%% DISCRETO
+fs = 10 * 796;     
+sampling = 1/fs; %Ts
