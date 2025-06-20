@@ -96,7 +96,7 @@ T_values = linspace(T_min, T_max, 6); % 6 puntos entre T_min y T_max
 % colors = jet(length(T_values));
 
 % Configurar figura
-figure('Position', [100 100 800 800]);
+figure('Position', [100 100 765 750]);
 hold on;
 
 % Crear celdas para almacenar sistemas
@@ -164,8 +164,8 @@ end
 
 
 % Configuraciones finales
-% title('Mapa de polos y ceros del sistema LTI para diferentes valores de R_{s}');
-title('');
+title('Mapa de polos y ceros del sistema LTI para diferentes valores de R_{s}');
+% title('');
 xlabel('Parte Real');
 ylabel('Parte Imaginaria');
 legend(legendEntries, 'Location', 'northwest');
